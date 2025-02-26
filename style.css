@@ -17,6 +17,7 @@ body {
   background: var(--primary-color);
   color: var(--secondary-color);
   font-family: "Poppins", sans-serif;
+  font-size: 16px; /* Set base font size */
 }
 
 header {
@@ -385,7 +386,7 @@ header::after {
 }
 
 .card:hover {
-  margin-right: 320px;
+  margin-right: 300px;
 }
 
 .card:nth-child(1)::before {
@@ -399,6 +400,15 @@ header::after {
 }
 .card:nth-child(4)::before {
   background: url("assets/hood_ducting.jpg") center / cover;
+}
+.card:nth-child(5)::before {
+  background: url("assets/unit_dingin.jpg") center / cover;
+}
+.card:nth-child(6)::before {
+  background: url("assets/mechanical.jpg") center / cover;
+}
+.card:nth-child(7)::before {
+  background: url("assets/kompor_bersih.jpg") center / cover;
 }
 
 .card::before {
@@ -446,6 +456,17 @@ header::after {
 
 .card:nth-child(4) {
   background: linear-gradient(to bottom, #800080, #4b0082);
+}
+.card:nth-child(5) {
+  background: linear-gradient(to bottom, #007bff, #0056b3);
+}
+
+.card:nth-child(6) {
+  background: linear-gradient(to bottom, #ff7f50, #ff4500);
+}
+
+.card:nth-child(7) {
+  background: linear-gradient(to bottom, #32cd32, #008000);
 }
 
 .card-detail {
@@ -496,6 +517,16 @@ header::after {
 .card:nth-child(4) .card-detail {
   background-image: url("assets/hood_ducting.jpg");
 }
+.card:nth-child(5) .card-detail {
+  background-image: url("assets/unit_dingin.jpg");
+}
+.card:nth-child(6) .card-detail {
+  background-image: url("assets/mechanical.jpg");
+}
+.card:nth-child(7) .card-detail {
+  background-image: url("assets/kompor_bersih.jpg");
+}
+
 
 .title {
   font-size: 32px;
