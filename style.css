@@ -361,11 +361,14 @@ header::after {
 
 .section {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: 20px;
-  margin-top: 50px;
+}
+.row {
+  display: flex;
+  gap: 20px;
   justify-content: center;
-  flex-wrap: wrap;
-  position: relative;
 }
 
 .card {
@@ -389,6 +392,17 @@ header::after {
   margin-right: 300px;
 }
 
+.card::after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  width: 2px;
+  height: 40px;
+  background: white;
+  transform: translateX(-50%);
+}
+
 .card:nth-child(1)::before {
   background: url("assets/unit_dingin.jpg") center / cover;
 }
@@ -399,16 +413,19 @@ header::after {
   background: url("assets/kompor_bersih.jpg") center / cover;
 }
 .card:nth-child(4)::before {
-  background: url("assets/hood_ducting.jpg") center / cover;
+  background: url("assets/service_hood.jpg") center / cover;
 }
-.card:nth-child(5)::before {
-  background: url("assets/unit_dingin.jpg") center / cover;
+.row:nth-child(2) .card:nth-child(1)::before {
+  background: url("assets/plumbing.jpg") center / cover;
 }
-.card:nth-child(6)::before {
-  background: url("assets/mechanical.jpg") center / cover;
+.row:nth-child(2) .card:nth-child(2)::before {
+  background: url("assets/sparepart_kompor.jpg") center / cover;
 }
-.card:nth-child(7)::before {
-  background: url("assets/kompor_bersih.jpg") center / cover;
+.row:nth-child(2) .card:nth-child(3)::before {
+  background: url("assets/sparepart_unit_pendingin.jpg") center / cover;
+}
+.row:nth-child(2) .card:nth-child(4)::before {
+  background: url("assets/unit_kitchen.jpg") center / cover;
 }
 
 .card::before {
@@ -432,42 +449,36 @@ header::after {
   font-weight: bold;
   color: transparent;
   -webkit-text-stroke: 2px white;
+  position: absolute;
+  bottom: 20px;
+  text-align: center;
 }
 
 .card-text {
-  font-size: 18px;
+  position: absolute;
+  top: 65px;
+  left: 50%;
+  transform: translateX(-50%);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-size: 15px;
   font-weight: bold;
   color: white;
-  text-align: center;
-  margin-top: 10px;
+  white-space: nowrap;
+  max-height: 100%; /* Menyesuaikan tinggi maksimal dengan card */
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.card:nth-child(1) {
-  background: linear-gradient(to bottom, #007bff, #0056b3);
-}
+.row:first-child .card:nth-child(1) { background: linear-gradient(to bottom, #007bff, #0056b3); }
+.row:first-child .card:nth-child(2) { background: linear-gradient(to bottom, #ff7f50, #ff4500); }
+.row:first-child .card:nth-child(3) { background: linear-gradient(to bottom, #32cd32, #008000); }
+.row:first-child .card:nth-child(4) { background: linear-gradient(to bottom, #800080, #4b0082); }
 
-.card:nth-child(2) {
-  background: linear-gradient(to bottom, #ff7f50, #ff4500);
-}
-
-.card:nth-child(3) {
-  background: linear-gradient(to bottom, #32cd32, #008000);
-}
-
-.card:nth-child(4) {
-  background: linear-gradient(to bottom, #800080, #4b0082);
-}
-.card:nth-child(5) {
-  background: linear-gradient(to bottom, #007bff, #0056b3);
-}
-
-.card:nth-child(6) {
-  background: linear-gradient(to bottom, #ff7f50, #ff4500);
-}
-
-.card:nth-child(7) {
-  background: linear-gradient(to bottom, #32cd32, #008000);
-}
+.row:nth-child(2) .card:nth-child(1) { background: linear-gradient(to bottom, #ff69b4, #c71585); }
+.row:nth-child(2) .card:nth-child(2) { background: linear-gradient(to bottom, #ffa500, #ff6347); }
+.row:nth-child(2) .card:nth-child(3) { background: linear-gradient(to bottom, #20b2aa, #008b8b); }
+.row:nth-child(2) .card:nth-child(4) { background: linear-gradient(to bottom, #4682b4, #191970); }
 
 .card-detail {
   position: absolute;
@@ -486,6 +497,9 @@ header::after {
   background-size: cover;  
   background-position: center; 
   background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 .card-detail::before {
@@ -515,42 +529,65 @@ header::after {
   background-image: url("assets/kompor_bersih.jpg");
 }
 .card:nth-child(4) .card-detail {
-  background-image: url("assets/hood_ducting.jpg");
+  background-image: url("assets/service_hood.jpg");
 }
-.card:nth-child(5) .card-detail {
-  background-image: url("assets/unit_dingin.jpg");
+.row:nth-child(2) .card:nth-child(1) .card-detail {
+  background-image: url("assets/plumbing.jpg") !important;
 }
-.card:nth-child(6) .card-detail {
-  background-image: url("assets/mechanical.jpg");
+.row:nth-child(2) .card:nth-child(2) .card-detail {
+  background-image: url("assets/sparepart_kompor.jpg") !important;
 }
-.card:nth-child(7) .card-detail {
-  background-image: url("assets/kompor_bersih.jpg");
+.row:nth-child(2) .card:nth-child(3) .card-detail {
+  background-image: url("assets/sparepart_unit_pendingin.jpg") !important;
 }
-
+.row:nth-child(2) .card:nth-child(4) .card-detail {
+  background-image: url("assets/unit_kitchen.jpg") !important;
+}
 
 .title {
   font-size: 32px;
   font-weight: bold;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
 }
 
-.card-detail h3, .card-detail p {
-  position: relative;
-  z-index: 1; 
-  color: white;
-  text-align: left;
-}
-
-.card-detail h3 {
-  font-size: 24px;
-  font-weight: bold;
+.card-header {
+  display: flex;
+  align-items: center;
   margin-bottom: 10px;
 }
 
-.card-detail p {
+.line {
+  width: 50px;
+  height: 1.5px;
+  background-color: var(--secondary-color); 
+  margin-right: 10px;
+}
+
+.service-text {
+  font-size: 9px;
+  font-weight: bold;
+  color: var(--secondary-color); 
+}
+
+.card-content {
+  position: relative;
+  z-index: 1;
+  color: var(--secondary-color); 
+  text-align: left;
+}
+
+.card-content h3 {
+  font-size: 25px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.card-content p {
   font-size: 10px;
+  font-weight: 100;
   line-height: 1.5;
+  margin-bottom: 20px;
 }
 
 @keyframes float {
@@ -685,40 +722,66 @@ footer {
 
 #director {
   width: 100%;
-  padding: 4rem 0;
-  background: var(--secondary-color);
+  padding: 3rem 0;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .director-container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1000px;
   margin: auto;
-  padding: 0 20px; 
+  padding: 0 20px;
   text-align: center;
 }
 
 .director-title {
   font-size: 2.5rem;
-  font-weight: bold;
-  margin-bottom: 2rem; 
+  font-weight: 700;
+  margin-bottom: 1.5rem;
   color: var(--primary-color);
-  letter-spacing: 2px; 
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  position: relative;
+  display: inline-block;
+}
+
+.director-title::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: var(--primary-color);
+  margin: 6px auto 0;
+  border-radius: 2px;
 }
 
 .director-info {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 3rem; 
-  flex-wrap: wrap; 
+  gap: 2rem;
+  flex-wrap: wrap;
+  background: #f9f9f9;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .director-photo {
-  width: 300px;
-  height: 450px; 
-  overflow: hidden; 
-  border-radius: 15px; 
+  width: 280px;
+  height: 400px;
+  overflow: hidden;
+  border-radius: 15px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transform: scale(1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.director-photo:hover {
+  transform: scale(1.05);
 }
 
 .director-photo img {
@@ -728,34 +791,45 @@ footer {
 }
 
 .director-details {
-  max-width: 600px; 
+  max-width: 500px;
   text-align: left;
+  color: var(--primary-color);
 }
 
 .director-details h3 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
+  font-size: 1.8rem;
+  margin-top: -12rem;
+  margin-bottom: 0.5rem;
   color: var(--primary-color);
-  font-weight: bold;
+  font-weight: 700;
 }
 
 .director-details p {
   font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.director-quote {
+  font-style: italic;
+  font-size: 1rem;
   color: var(--primary-color);
-  line-height: 1.6; 
-  margin-bottom: 1.5rem; 
+  text-align: center;
+  margin-top: 1rem;
+  opacity: 0.8;
 }
 
 @media (max-width: 768px) {
   .director-info {
-    flex-direction: column; 
+    flex-direction: column;
     gap: 1.5rem;
+    padding: 1.5rem;
   }
 
   .director-photo {
     width: 100%;
     height: auto;
-    max-height: 450px;
+    max-height: 400px;
   }
 
   .director-details {
