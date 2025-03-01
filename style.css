@@ -17,7 +17,7 @@ body {
   background: var(--primary-color);
   color: var(--secondary-color);
   font-family: "Poppins", sans-serif;
-  font-size: 16px; /* Set base font size */
+  font-size: 16px; 
 }
 
 header {
@@ -465,7 +465,7 @@ header::after {
   font-weight: bold;
   color: white;
   white-space: nowrap;
-  max-height: 100%; /* Menyesuaikan tinggi maksimal dengan card */
+  max-height: 100%; 
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -607,7 +607,7 @@ header::after {
   width: 100%;
   padding: 2.5rem 0;
   background: var(--secondary-color);
-  overflow: hidden; 
+  overflow: hidden;
 }
 
 .client-container {
@@ -620,14 +620,21 @@ header::after {
 .client-title {
   font-size: 2.5rem;
   font-weight: bold;
-  margin-bottom: 7rem;
+  margin-bottom: 2rem;
   color: var(--primary-color);
+}
+
+.scroll-wrapper {
+  width: 100%;
+  overflow: hidden; 
+  position: relative;
 }
 
 .client-logos {
   display: flex;
-  gap: 40px; 
+  gap: 40px;
   animation: scrollLogos 20s linear infinite;
+  width: max-content;
 }
 
 .client-logo img {
@@ -642,16 +649,28 @@ header::after {
 
 @keyframes scrollLogos {
   0% {
-    transform: translateX(0); 
+    transform: translateX(0);
   }
   100% {
     transform: translateX(-50%); 
   }
 }
 
+@media (max-width: 768px) {
+  .client-logos {
+    gap: 20px;
+    animation: scrollLogos 20s linear infinite;
+  }
+
+  .client-logo img {
+    max-width: 80px;
+  }
+}
+
 footer {
   background-color: white;
   padding: 20px;
+  position: relative;
 }
 
 .footer-container {
@@ -698,25 +717,23 @@ footer {
   font-size: 14px;
 }
 
-.scroll-wrapper {
-  width: 100%;
-  overflow: hidden;
-  position: relative;
-}
-
-.client-logos {
-  display: flex;
-  gap: 40px;
-  animation: scrollLogos 20s linear infinite;
-  width: max-content;
-}
-
-@keyframes scrollLogos {
-  0% {
-    transform: translateX(0);
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
-  100% {
-    transform: translateX(-50%); 
+
+  .footer-section {
+    margin-bottom: 20px;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+
+  .footer-bottom {
+    position: absolute;
   }
 }
 
@@ -798,7 +815,6 @@ footer {
 
 .director-details h3 {
   font-size: 1.8rem;
-  margin-top: -12rem;
   margin-bottom: 0.5rem;
   color: var(--primary-color);
   font-weight: 700;
@@ -808,15 +824,6 @@ footer {
   font-size: 1rem;
   line-height: 1.6;
   margin-bottom: 1rem;
-}
-
-.director-quote {
-  font-style: italic;
-  font-size: 1rem;
-  color: var(--primary-color);
-  text-align: center;
-  margin-top: 1rem;
-  opacity: 0.8;
 }
 
 @media (max-width: 768px) {
@@ -834,5 +841,176 @@ footer {
 
   .director-details {
     text-align: center;
+  }
+
+  .director-details h3 {
+    margin-top: 0; 
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-item {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 250px;
+    background: rgba(0, 0, 0, 0.9);
+    padding-top: 60px;
+    z-index: 1000;
+  }
+
+  .navbar-item.active {
+    display: flex;
+  }
+
+  .navbar-item li {
+    margin: 15px 0;
+  }
+
+  .navbar-item li a {
+    color: var(--secondary-color);
+    font-size: 1.2rem;
+  }
+
+  .burger-menu {
+    display: block;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1001;
+    cursor: pointer;
+  }
+
+  .burger-menu .bar {
+    width: 25px;
+    height: 3px;
+    background: var(--secondary-color);
+    margin: 5px 0;
+    transition: 0.4s;
+  }
+
+  .burger-menu.active .bar:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+  }
+
+  .burger-menu.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .burger-menu.active .bar:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+  }
+
+  .header-carousel .carousel-text {
+    max-width: 80%;
+    left: 5%;
+  }
+
+  .card {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+  }
+
+  .card:hover {
+    margin-right: 0;
+  }
+
+  .card-detail {
+    position: static;
+    width: 100%;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    margin-top: 20px;
+  }
+
+  .director-info {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .director-photo {
+    width: 100%;
+    height: auto;
+  }
+
+  .director-details {
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 80%;
+    height: auto;
+    margin-bottom: 20px;
+  }
+
+  .card-detail {
+    position: static;
+    width: 100%;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-carousel .carousel-text {
+    max-width: 80%;
+    width: 100%;
+    text-align: center;
+    margin: 0 auto; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .carousel-text h1.job {
+    font-size: 2.5rem;
+    text-align: center;
+    width: 100%;
+  }
+
+  .carousel-text p {
+    font-size: 1rem;
+    text-align: center;
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-mission-vision-carousel {
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+
+  .about-container,
+  .mission-container,
+  .vission-container {
+    padding: 10px;
+  }
+
+  .about-title,
+  .mission-title,
+  .vission-title {
+    font-size: 2rem;
+  }
+
+  .about-info,
+  .mission-info,
+  .vission-info {
+    font-size: 1rem;
   }
 }

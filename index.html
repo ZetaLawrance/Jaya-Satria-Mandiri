@@ -25,11 +25,16 @@
           <img src="assets/logo.png" alt="" />
           <a>Jaya Satria Mandiri</a>
         </h1>
-        <ul class="navbar-item">
+        <div class="burger-menu" id="burger-menu">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </div>
+        <ul class="navbar-item" id="navbar-item">
           <li><a href="#header">Home</a></li>
           <li><a href="#about-mission-vision">About Us</a></li>
           <li><a href="#services">Services</a></li>
-          <li><a href="#footer">Contact Us</a></li>
+          <li><a href="#director">Contact Us</a></li>
         </ul>
       </nav>
       <div class="header-carousel" id="header">
@@ -510,6 +515,27 @@
         } else {
           navbar.classList.remove("scrolled");
         }
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const clientLogos = document.querySelector(".client-logos");
+        const logos = clientLogos.querySelectorAll(".client-logo");
+
+        let scrollAmount = 0;
+        const scrollSpeed = 1;
+
+        function scrollLogos() {
+          scrollAmount += scrollSpeed;
+          clientLogos.style.transform = `translateX(-${scrollAmount}px)`;
+
+          if (scrollAmount >= clientLogos.scrollWidth / 2) {
+            scrollAmount = 0;
+          }
+
+          requestAnimationFrame(scrollLogos);
+        }
+
+        scrollLogos();
       });
 
       document.addEventListener("scroll", function () {
